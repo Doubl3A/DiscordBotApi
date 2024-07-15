@@ -1,0 +1,6 @@
+﻿services:
+  discordbot.api:
+    image: discordbot.api
+    build:
+      context: .
+      dockerfile: DiscordBot.Api/Dockerfile

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DiscordBot.Api</name>
+    </assembly>
+    <members>
+        <member name="T:DiscordBot.Api.Constants.Authorization.Policies">
+            <summary>
+                Different authentication policies used around the API
+            </summary>
+        </member>
+        <member name="F:DiscordBot.Api.Constants.Authorization.Policies.IsWebsite">
+            <summary>
+                Used by the discord bot website
+            </summary>
+        </member>
+        <member name="T:DiscordBot.Api.Controllers.InterestController">
+            <summary>
+                Used by the bot website to "register" interested users
+            </summary>
+        </member>
+        <member name="M:DiscordBot.Api.Controllers.InterestController.RegisterUserInterest">
+            <summary>
+                Register a users interest in the discord bot
+            </summary>
+            <response code="204">Returned after a successful interest registration</response>
+            <response code="400">Returned when invalid interest data is provided</response>
+        </member>
+        <member name="T:DiscordBot.Api.Extensions.ServiceCollectionExtensions">
+            <summary>
+                A collection of setup extensions on <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> used in API configuration
+            </summary>
+        </member>
+        <member name="M:DiscordBot.Api.Extensions.ServiceCollectionExtensions.LoadSwaggerDocumentation(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+                Load the generated swagger documentation from the .xml file at root
+            </summary>
+            <remarks>
+                This should be done after adding API versioning to the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />
+            </remarks>
+        </member>
+        <member name="M:DiscordBot.Api.Extensions.ServiceCollectionExtensions.AddCustomApiVersioning(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+                Add and configure API versioning
+            </summary>
+        </member>
+        <member name="T:DiscordBot.Api.Extensions.WebApplicationBuilderExtensions">
+            <summary>
+                A collection of extension methods for <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder" />
+            </summary>
+        </member>
+        <member name="M:DiscordBot.Api.Extensions.WebApplicationBuilderExtensions.AddConfiguredSerilog(Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
+            <summary>
+                Add preconfigured serilog to the applicaiton
+            </summary>
+        </member>
+    </members>
+</doc>
