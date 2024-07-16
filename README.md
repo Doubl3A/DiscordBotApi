@@ -18,7 +18,11 @@ To ensure coherence in code styling, we use an editor-config file with saved cod
 * Visual Studio:
     * `Options -> Text Editor -> Code Cleanup -> Run Code Clean Up profile on Save`
 
-## Swagger documentation
-For swagger documentation we use a ```DiscordBot.Api.xml``` file to save and load from. This is automatically generated at build. To enable this:
-1. Right-click on the ```DiscordBot.Api``` project, and go to project properties.
-2. Goto Configuration for the debug build, and ensure that the ```XML documentation --> Generate``` is enabled, and has the same relative path as the existing file (`DiscordBot.Api.xml`)
+## Branches
+All development branches should branch out of the `develop` branch. New changes should be merged inn with a PR to the develop branch.
+The `main` branch should reflect what is live in production.
+
+### Naming
+Branches should be named based on the GitHub task they are connected to with this format: `[task tag]/[task name]`.
+Ex. a task with the tag `feature` and a title of `API Authentication` should have the following branch `feature/api-authentication` (kebab case).
+Tasks with excessive names can be shortened down to be more readable.

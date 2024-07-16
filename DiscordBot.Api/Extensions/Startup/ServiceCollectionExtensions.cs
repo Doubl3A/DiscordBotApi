@@ -3,7 +3,7 @@ using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using Microsoft.OpenApi.Models;
 
-namespace DiscordBot.Api.Extensions;
+namespace DiscordBot.Api.Extensions.Startup;
 
 /// <summary>
 ///     A collection of setup extensions on <see cref="IServiceCollection" /> used in API configuration

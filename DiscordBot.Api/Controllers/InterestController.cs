@@ -1,3 +1,4 @@
+using DiscordBot.Api.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiscordBot.Api.Controllers;
@@ -8,8 +9,10 @@ namespace DiscordBot.Api.Controllers;
 [ApiController]
 [Route("api/v{version:apiVersion}/[controller]")]
 // [Authorize(Policies.IsWebsite)] TODO - Setup authorization
-public class InterestController : ControllerBase
+public class InterestController(IRegisteredInterestRepository registeredInterestRepository) : ControllerBase
 {
+    private readonly IRegisteredInterestRepository _registeredInterestRepository = registeredInterestRepository;
+
     /// <summary>
     ///     Register a users interest in the discord bot
     /// </summary>

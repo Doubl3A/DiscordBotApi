@@ -19,6 +19,11 @@
                 Used by the bot website to "register" interested users
             </summary>
         </member>
+        <member name="M:DiscordBot.Api.Controllers.InterestController.#ctor(DiscordBot.Api.Interfaces.IRegisteredInterestRepository)">
+            <summary>
+                Used by the bot website to "register" interested users
+            </summary>
+        </member>
         <member name="M:DiscordBot.Api.Controllers.InterestController.RegisterUserInterest">
             <summary>
                 Register a users interest in the discord bot
@@ -26,12 +31,22 @@
             <response code="204">Returned after a successful interest registration</response>
             <response code="400">Returned when invalid interest data is provided</response>
         </member>
-        <member name="T:DiscordBot.Api.Extensions.ServiceCollectionExtensions">
+        <member name="T:DiscordBot.Api.DbContexts.RegisteredInterestContext">
+            <summary>
+                DB context for accessing the registered interests
+            </summary>
+        </member>
+        <member name="M:DiscordBot.Api.DbContexts.RegisteredInterestContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{DiscordBot.Api.DbContexts.RegisteredInterestContext})">
+            <summary>
+                DB context for accessing the registered interests
+            </summary>
+        </member>
+        <member name="T:DiscordBot.Api.Extensions.Startup.ServiceCollectionExtensions">
             <summary>
                 A collection of setup extensions on <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> used in API configuration
             </summary>
         </member>
-        <member name="M:DiscordBot.Api.Extensions.ServiceCollectionExtensions.LoadSwaggerDocumentation(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:DiscordBot.Api.Extensions.Startup.ServiceCollectionExtensions.LoadSwaggerDocumentation(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
                 Load the generated swagger documentation from the .xml file at root
             </summary>
@@ -39,20 +54,90 @@
                 This should be done after adding API versioning to the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />
             </remarks>
         </member>
-        <member name="M:DiscordBot.Api.Extensions.ServiceCollectionExtensions.AddCustomApiVersioning(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:DiscordBot.Api.Extensions.Startup.ServiceCollectionExtensions.AddCustomApiVersioning(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
                 Add and configure API versioning
             </summary>
         </member>
-        <member name="T:DiscordBot.Api.Extensions.WebApplicationBuilderExtensions">
+        <member name="T:DiscordBot.Api.Extensions.Startup.WebApplicationBuilderExtensions">
             <summary>
                 A collection of extension methods for <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder" />
             </summary>
         </member>
-        <member name="M:DiscordBot.Api.Extensions.WebApplicationBuilderExtensions.AddConfiguredSerilog(Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
+        <member name="M:DiscordBot.Api.Extensions.Startup.WebApplicationBuilderExtensions.AddConfiguredSerilog(Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
             <summary>
                 Add preconfigured serilog to the applicaiton
             </summary>
+        </member>
+        <member name="M:DiscordBot.Api.Extensions.Startup.WebApplicationBuilderExtensions.AddConfiguredDb(Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
+            <summary>
+                Configure the application with the relevant DB context's
+            </summary>
+        </member>
+        <member name="M:DiscordBot.Api.Extensions.Startup.WebApplicationBuilderExtensions.AddCustomServices(Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
+            <summary>
+                Add custom services to the application
+            </summary>
+        </member>
+        <member name="T:DiscordBot.Api.Extensions.Startup.WebApplicationExtensions">
+            <summary>
+                A collection of custom extension methods for <see cref="T:Microsoft.AspNetCore.Builder.WebApplication" />
+            </summary>
+        </member>
+        <member name="M:DiscordBot.Api.Extensions.Startup.WebApplicationExtensions.UseDevelopSpecificCustomization(Microsoft.AspNetCore.Builder.WebApplication)">
+            <summary>
+                Add development specific customization to the application
+            </summary>
+        </member>
+        <member name="T:DiscordBot.Api.Interfaces.IRegisteredInterestRepository">
+            <summary>
+                Collection of methods used to administrate the registered interest's in the DB
+            </summary>
+        </member>
+        <member name="M:DiscordBot.Api.Interfaces.IRegisteredInterestRepository.RegisterNewInterest">
+            <summary>
+                Register a new user interest
+            </summary>
+        </member>
+        <member name="M:DiscordBot.Api.Interfaces.IRegisteredInterestRepository.GetRegisteredInterests">
+            <summary>
+                Get all registered interests
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.IEnumerable`1" /> with all registered interests</returns>
+        </member>
+        <member name="T:DiscordBot.Api.Migrations.InitialDbMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:DiscordBot.Api.Migrations.InitialDbMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DiscordBot.Api.Migrations.InitialDbMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DiscordBot.Api.Migrations.InitialDbMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:DiscordBot.Api.Models.Database.RegisteredInterest">
+            <summary>
+                Saved DB model of users who registered as interested on the website
+            </summary>
+        </member>
+        <member name="P:DiscordBot.Api.Models.Database.RegisteredInterest.TimeRegistered">
+            <summary>
+                The time and date of when the user registered their interest
+            </summary>
+        </member>
+        <member name="T:DiscordBot.Api.Repositories.RegisteredInterestRepository">
+            <inheritdoc />
+        </member>
+        <member name="M:DiscordBot.Api.Repositories.RegisteredInterestRepository.#ctor(DiscordBot.Api.DbContexts.RegisteredInterestContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:DiscordBot.Api.Repositories.RegisteredInterestRepository.RegisterNewInterest">
+            <inheritdoc />
+        </member>
+        <member name="M:DiscordBot.Api.Repositories.RegisteredInterestRepository.GetRegisteredInterests">
+            <inheritdoc />
         </member>
     </members>
 </doc>

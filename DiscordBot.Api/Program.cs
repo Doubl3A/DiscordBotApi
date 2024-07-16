@@ -1,4 +1,4 @@
-using DiscordBot.Api.Extensions;
+using DiscordBot.Api.Extensions.Startup;
 using Serilog;
 
 // Setup logger
@@ -21,33 +21,24 @@ builder.Services.AddControllers(options => { options.ReturnHttpNotAcceptable = t
 // Add problem details to errored requests
 builder.Services.AddProblemDetails();
 
+// Initiate Db contexts
+builder.AddConfiguredDb();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Load customization for api versioning and swagger
 builder.Services.AddCustomApiVersioning();
 builder.Services.LoadSwaggerDocumentation();
 
+// Add custom services to the application
+builder.AddCustomServices();
+
+// Build the application and configure the HTTP pipeline
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI(
-        setupAction =>
-        {
-            var descriptions = app.DescribeApiVersions();
-            foreach (var description in descriptions)
-            {
-                setupAction.SwaggerEndpoint(
-                    $"/swagger/{description.GroupName}/swagger.json",
-                    description.GroupName.ToUpperInvariant()
-                );
-            }
-        }
-    );
-}
+app.UseDevelopSpecificCustomization();
 
 app.UseHttpsRedirection();
 
