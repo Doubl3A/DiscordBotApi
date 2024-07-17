@@ -28,6 +28,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCustomApiVersioning();
 builder.Services.LoadSwaggerDocumentation();
 
+// API health check service
+builder.Services.AddHealthChecks();
+
+// Build the application and configure the HTTP pipeline
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -56,5 +60,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHealthChecks("api/is-alive");
 
 app.Run();
